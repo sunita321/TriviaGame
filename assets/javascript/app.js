@@ -57,8 +57,8 @@ var timer =
     {
         timer.time = 5;
         
-        //change the "display" div to "00:00"
-        $('#timerDisplay').html('00:05');
+        //change the "display" div to "00:05"
+        $('#timerDisplay').html('Timer: ' + '00:05');
 
     },
 
@@ -80,10 +80,12 @@ var timer =
          //Get the current time, pass that into the stopwatch.timeConverter function, and save the result in a variable
         var converted = timer.timeConverter(timer.time);
          //Use the variable you just created to show the converted time in the "display" div
-        $('#timerDisplay').html(converted);
+        $('#timerDisplay').html('Timer: ' + converted);
 
         if (timer.time == 0)
         {
+        	//Display correct answer if timer runs out and question is missed
+        	$('#quizMessage').html("<div>" + QuestionsArray[indexQuestion].answer);
         	gameScores.missed++;
         	nextQuestion();
         }
@@ -146,6 +148,8 @@ $('.btn').click(function()
 		//Else loss
 		else
 		{
+			//Display correct answer for 3 seconds
+			$('#quizMessage').html("<div>" + QuestionsArray[indexQuestion].answer);
 			gameScores.answeredWrong ++;
 			console.log("wrong answer " + gameScores.answeredWrong);
 		}
@@ -172,9 +176,10 @@ function nextQuestion()
 //Display score when game ends
 	else
 	{
-		$("#score").html("<div>"+ "Correct Guesses: " + gameScores.answeredCorrect +
-		"</div>" + "<div>"+ "Wrong Guesses: " + gameScores.answeredWrong +"</div>" +
-		"</div>" + "<div>"+ "Missed Questions: " + gameScores.missed +"</div>" 
+		$("#score").html("<div>"+ "Your Score" +"</div>"+
+		"<div>"+ "Correct Guesses: " + gameScores.answeredCorrect +"</div>" + 
+		"<div>"+ "Wrong Guesses: " + gameScores.answeredWrong +"</div>" +
+		"<div>"+ "Missed Questions: " + gameScores.missed +"</div>" 
 		);
 
 		timer.stop();
