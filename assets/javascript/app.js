@@ -46,6 +46,67 @@ var gameScores =
 	missed: 0
 };
 
+
+//Timer Countdown 
+
+var timer = 
+{
+    time:5,
+
+	reset: function()
+    {
+        timer.time = 5;
+        
+        //change the "display" div to "00:00"
+        $('#timerDisplay').html('00:05');
+
+    },
+
+    start: function()
+    {
+        //Use setInterval to start the count here
+        counter = setInterval(timer.count, 1000);
+    },
+
+    stop: function()
+    {
+        //Use clearInterval to stop the count here
+        clearInterval(counter);
+    },
+
+ 	count: function()
+    {   //increment time by 1, remember we can't use "this" here
+        timer.time--;
+         //Get the current time, pass that into the stopwatch.timeConverter function, and save the result in a variable
+        var converted = timer.timeConverter(timer.time);
+         //Use the variable you just created to show the converted time in the "display" div
+        $('#timerDisplay').html(converted);
+
+        if (timer.time == 0)
+        {
+        	gameScores.missed++;
+        	nextQuestion();
+        }
+
+    },
+
+ 	timeConverter: function(t)
+    { //This function is done. You do not need to touch it. It takes the current time in seconds and converts it to minutes and seconds (mm:ss).
+        var minutes = Math.floor(t/60);
+        var seconds = t - (minutes * 60);
+        if (seconds < 10){
+            seconds = "0" + seconds;
+        }
+        if (minutes === 0){
+            minutes = "00";
+        } else if (minutes < 10){
+            minutes = "0" + minutes;
+        }
+        return minutes + ":" + seconds;
+    }
+
+};
+
 //Display Question
 
 	function displayQuestion()
@@ -56,46 +117,96 @@ var gameScores =
 		$("#button2").text(QuestionsArray[indexQuestion].choices[2]);
 		$("#button3").text(QuestionsArray[indexQuestion].choices[3]);
 
+
 	}
 
 $(document).ready(function()
 
 {	
 	displayQuestion();
+	timer.reset();
+	timer.start();
+	$("#reset").hide();
 
 });
 
-//User input 
+//User input
 $('.btn').click(function() 
 {
-	var userButtonValue = ($(this).attr("data-value"));
-	console.log(userButtonValue);
-
-	if (userButtonValue == QuestionsArray[indexQuestion].correctAnswer)
+	if (indexQuestion < QuestionsArray.length)
 	{
-		gameScores.answeredCorrect ++;
-		console.log("correct answer " + gameScores.answeredCorrect);
+		var userButtonValue = ($(this).attr("data-value"));
+		console.log(userButtonValue);
+		//Check for win
+		if (userButtonValue == QuestionsArray[indexQuestion].correctAnswer)
+		{
+			gameScores.answeredCorrect ++;
+			console.log("correct answer " + gameScores.answeredCorrect);
+		}
+		//Else loss
+		else
+		{
+			gameScores.answeredWrong ++;
+			console.log("wrong answer " + gameScores.answeredWrong);
+		}
+
+		nextQuestion();
 	}
+});
 
-	else
-	{
-		gameScores.answeredWrong ++;
-		console.log("wrong answer " + gameScores.answeredWrong);
-	}
+//move to next question function
 
-
+function nextQuestion()
+{
 	indexQuestion++;
 
 	if (indexQuestion < QuestionsArray.length)
 	{
 		displayQuestion();
+		timer.stop();
+		timer.reset();
+		timer.start();
+
 	}
+
+//Display score when game ends
 	else
 	{
-		$("#score").html("<div>"+ "Correct Guesses: " + gameScores.answeredCorrect +"</div>" + "<div>"+ "Wrong Guesses: " + gameScores.answeredWrong +"</div>");
+		$("#score").html("<div>"+ "Correct Guesses: " + gameScores.answeredCorrect +
+		"</div>" + "<div>"+ "Wrong Guesses: " + gameScores.answeredWrong +"</div>" +
+		"</div>" + "<div>"+ "Missed Questions: " + gameScores.missed +"</div>" 
+		);
+
+		timer.stop();
+		$('#timerDisplay').html('00:00');
+
+		$("#reset").show();
+
+		$('.resetme').click(function()
+		{
+			resetVariables();
+			displayQuestion();
+			timer.stop();
+			timer.reset();
+			timer.start();
+
+		});
 		
 	}
-	
 
-});
+
+}
+
+function resetVariables() 
+{
+	console.log("resetVariables function reached");
+	gameScores.answeredCorrect = 0;
+	gameScores.answeredWrong = 0;
+	gameScores.missed = 0;
+	indexQuestion = 0;
+
+	$("#score").html("");
+	$("#reset").hide();
+}
+
 
