@@ -150,8 +150,9 @@ $('.btn').click(function()
 		{
 			$('#quizMessage').show(); //show the correct gif div
 			$('#timerDisplay').hide();
+			$('.btn').hide();
 			$('#quizMessage').html("<h2><p>Correct!</p></h2><img src='" + QuestionsArray[indexQuestion].correctGif + "' height = 200 width = 350 alt='correct'>");
-			gameScores.answeredCorrect ++;
+			gameScores.answeredCorrect ++;//increment score
 			console.log("correct answer " + gameScores.answeredCorrect);
 			
 			// hide the questionAsked board and stop the timer
@@ -165,10 +166,14 @@ $('.btn').click(function()
 		//Else loss
 		else
 		{
-			//Display correct answer??
-			$('#quizMessage').html("<div>" + QuestionsArray[indexQuestion].answer + "</div");
+			$('#quizMessage').show(); //show the correct gif div
+			$('#timerDisplay').hide();
+			$('.btn').hide();
+			$('#quizMessage').html("<h2><p>Wrong! <br> The correct answer was: <br>" + QuestionsArray[indexQuestion].answer + "</p></h2>");
 			gameScores.answeredWrong ++;
 			console.log("wrong answer " + gameScores.answeredWrong);
+
+
 		}
 
 
@@ -188,6 +193,7 @@ function nextQuestion()
 		displayQuestion();
 		$('#quizMessage').hide();
 		$('#timerDisplay').show();
+		$('.btn').show();
 		timer.stop();
 		timer.reset();
 		timer.start();
