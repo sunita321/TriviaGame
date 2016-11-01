@@ -215,6 +215,7 @@ function nextQuestion()
 
 		$('.resetme').click(function()
 		{
+			$('#quizMessage').hide();
 			resetVariables();
 			displayQuestion();
 			timer.stop();
