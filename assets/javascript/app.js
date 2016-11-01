@@ -88,10 +88,13 @@ var timer =
 
         if (timer.time == 0)
         {
-        	//Display correct answer if timer runs out and question is missed???
-        	$('#quizMessage').html("<div>" + QuestionsArray[indexQuestion].answer + "</div");
+        	//Display correct answer if timer runs out and question is missed
+        	$('#quizMessage').show(); //show the correct gif div
+			$('#timerDisplay').hide();
+			$('.btn').hide();
+			$('#quizMessage').html("<h2><p>Time's up! <br> The correct answer was: <br>" + QuestionsArray[indexQuestion].answer + "</p></h2>");
         	gameScores.missed++;
-        	nextQuestion();
+        	setTimeout(nextQuestion, 3000);
         }
 
     },
@@ -218,6 +221,7 @@ function nextQuestion()
 			$('#quizMessage').hide();
 			resetVariables();
 			displayQuestion();
+			$('.btn').show();
 			timer.stop();
 			timer.reset();
 			timer.start();
