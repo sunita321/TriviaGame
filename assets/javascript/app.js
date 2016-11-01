@@ -177,7 +177,7 @@ $('.btn').click(function()
 		}
 
 
-		setTimeout(nextQuestion, 5000);
+		setTimeout(nextQuestion, 3000);
 		
 	}
 });
