@@ -205,7 +205,9 @@ function nextQuestion()
 //Display score when game ends
 	else
 	{
-		$("#score").html("<div>"+ "Your Score" +"</div>"+
+		$('#quizMessage').hide();
+		$('#question').hide();
+		$("#score").html("<div>"+ "Game Over! <br> Your Score" +"</div>"+
 		"<div>"+ "Correct Guesses: " + gameScores.answeredCorrect +"</div>" + 
 		"<div>"+ "Wrong Guesses: " + gameScores.answeredWrong +"</div>" +
 		"<div>"+ "Missed Questions: " + gameScores.missed +"</div>" 
