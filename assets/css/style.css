@@ -1,11 +1,17 @@
-.container-fluid{
-  background: url('../images/background.jpg');
+body{
+  background: url('../images/background.jpg')fixed;
   background-size: 100%;
   background-repeat: no-repeat;
   text-align: center;
   font-family: sans-serif;
 }
 
+
+/*quizMessage{
+
+  width: 400px;
+  height: 300px;
+}*/
 
 
 

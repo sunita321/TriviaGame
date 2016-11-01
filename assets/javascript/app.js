@@ -4,7 +4,8 @@
 		question: "Who was the first Disney princess based on a real historical figure?",
 		answer: "Pocahontas",
 		choices: ["Mulan", "Snow White", "Tiana", "Pocahontas"],
-		correctAnswer: 3
+		correctAnswer: 3,
+		correctGif: "assets/images/giphy1.gif"
 	};
 
 	var question1 = 
@@ -12,7 +13,8 @@
 		question: "Which is the only Disney animated film with a main character that doesn’t speak?",
 		answer: "Dumbo",
 		choices: ["Robin Hood", "Dumbo", "Pinocchio", "Fantasia"],
-		correctAnswer: 1
+		correctAnswer: 1,
+		correctGif: "assets/images/giphy2.gif"
 	};
 
 	var question2 = 
@@ -20,7 +22,8 @@
 		question: "Which actor supplied the voice of Mushu in Mulan?",
 		answer: "Eddie Murphy",
 		choices: ["Tom Cruise", "Brad Pitt", "Eddie Murphy", "Nicholas Cage"],
-		correctAnswer: 2
+		correctAnswer: 2,
+		correctGif: "assets/images/giphy3.gif"
 	};
 
 	var question3 = 
@@ -28,7 +31,8 @@
 		question: "In Aladdin, what does Jasmine steal from the Marketplace?",
 		answer: "Apple",
 		choices: ["Apple", "Bread", "Jewelry", "Grapes"],
-		correctAnswer: 0
+		correctAnswer: 0,
+		correctGif: "assets/images/giphy4.gif"
 	};
 
 
@@ -132,9 +136,11 @@ $(document).ready(function()
 
 });
 
-//User input
+//User input check answer
 $('.btn').click(function() 
 {
+	
+
 	if (indexQuestion < QuestionsArray.length)
 	{
 		var userButtonValue = ($(this).attr("data-value"));
@@ -142,8 +148,19 @@ $('.btn').click(function()
 		//Check for win
 		if (userButtonValue == QuestionsArray[indexQuestion].correctAnswer)
 		{
+			$('#quizMessage').show(); //show the correct gif div
+			$('#timerDisplay').hide();
+			$('#quizMessage').html("<h2><p>Correct!</p></h2><img src='" + QuestionsArray[indexQuestion].correctGif + "' height = 200 width = 350 alt='correct'>");
 			gameScores.answeredCorrect ++;
 			console.log("correct answer " + gameScores.answeredCorrect);
+			
+			// hide the questionAsked board and stop the timer
+			//$("#timerDisplay").hide();
+			timer.stop();
+			timer.reset();
+						
+		
+
 		}
 		//Else loss
 		else
@@ -152,9 +169,11 @@ $('.btn').click(function()
 			$('#quizMessage').html("<div>" + QuestionsArray[indexQuestion].answer + "</div");
 			gameScores.answeredWrong ++;
 			console.log("wrong answer " + gameScores.answeredWrong);
-					}
+		}
 
-		nextQuestion();
+
+		setTimeout(nextQuestion, 5000);
+		
 	}
 });
 
@@ -167,10 +186,11 @@ function nextQuestion()
 	if (indexQuestion < QuestionsArray.length)
 	{
 		displayQuestion();
+		$('#quizMessage').hide();
+		$('#timerDisplay').show();
 		timer.stop();
 		timer.reset();
 		timer.start();
-
 	}
 
 //Display score when game ends
@@ -213,5 +233,4 @@ function resetVariables()
 	$("#score").html("");
 	$("#reset").hide();
 }
-
 
