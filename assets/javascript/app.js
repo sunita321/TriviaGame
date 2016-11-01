@@ -51,14 +51,14 @@ var gameScores =
 
 var timer = 
 {
-    time:5,
+    time:10,
 
 	reset: function()
     {
-        timer.time = 5;
+        timer.time = 10;
         
         //change the "display" div to "00:05"
-        $('#timerDisplay').html('Timer: ' + '00:05');
+        $('#timerDisplay').html('Timer: ' + '00:10');
 
     },
 
@@ -84,8 +84,8 @@ var timer =
 
         if (timer.time == 0)
         {
-        	//Display correct answer if timer runs out and question is missed
-        	$('#quizMessage').html("<div>" + QuestionsArray[indexQuestion].answer);
+        	//Display correct answer if timer runs out and question is missed???
+        	$('#quizMessage').html("<div>" + QuestionsArray[indexQuestion].answer + "</div");
         	gameScores.missed++;
         	nextQuestion();
         }
@@ -148,11 +148,11 @@ $('.btn').click(function()
 		//Else loss
 		else
 		{
-			//Display correct answer for 3 seconds
-			$('#quizMessage').html("<div>" + QuestionsArray[indexQuestion].answer);
+			//Display correct answer??
+			$('#quizMessage').html("<div>" + QuestionsArray[indexQuestion].answer + "</div");
 			gameScores.answeredWrong ++;
 			console.log("wrong answer " + gameScores.answeredWrong);
-		}
+					}
 
 		nextQuestion();
 	}
