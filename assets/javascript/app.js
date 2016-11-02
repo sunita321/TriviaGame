@@ -261,6 +261,7 @@ function nextQuestion()
 			displayQuestion();
 			$('#question').show();
 			$('.btn').show();
+			$('#timerDisplay').show();
 			timer.stop();
 			timer.reset();
 			timer.start();
