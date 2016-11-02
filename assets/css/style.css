@@ -15,6 +15,13 @@ body{
   font-family: sans-serif;
 }
 
+#startme {
+  border-radius: 50%;
+  font-size: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px 10px 20px;
+}
 
 .row{
   margin-bottom: 10px;
