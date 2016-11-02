@@ -151,9 +151,7 @@ $('.btn').click(function()
 		//Check for win
 		if (userButtonValue == QuestionsArray[indexQuestion].correctAnswer)
 		{
-			$('#quizMessage').show(); //show the correct gif div
-			$('#timerDisplay').hide();
-			$('.btn').hide();
+			
 			$('#quizMessage').html("<h2><p>Correct!</p></h2><img src='" + QuestionsArray[indexQuestion].correctGif + "' height = 200 width = 350 alt='correct'>");
 			gameScores.answeredCorrect ++;//increment score
 			console.log("correct answer " + gameScores.answeredCorrect);
@@ -169,9 +167,7 @@ $('.btn').click(function()
 		//Else loss
 		else
 		{
-			$('#quizMessage').show(); //show the correct gif div
-			$('#timerDisplay').hide();
-			$('.btn').hide();
+		
 			$('#quizMessage').html("<h2><p>Wrong! <br> The correct answer was: <br>" + QuestionsArray[indexQuestion].answer + "</p></h2>");
 			gameScores.answeredWrong ++;
 			console.log("wrong answer " + gameScores.answeredWrong);
@@ -179,6 +175,9 @@ $('.btn').click(function()
 
 		}
 
+		$('#quizMessage').show(); //show the correct gif div
+		$('#timerDisplay').hide();
+		$('.btn').hide();
 
 		setTimeout(nextQuestion, 3000);
 		
@@ -223,6 +222,7 @@ function nextQuestion()
 			$('#quizMessage').hide();
 			resetVariables();
 			displayQuestion();
+			$('#question').show();
 			$('.btn').show();
 			timer.stop();
 			timer.reset();
