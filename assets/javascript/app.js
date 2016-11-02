@@ -186,7 +186,7 @@ $('.btn').click(function()
 			audio = new Audio("assets/ding.mp3");
 			audio.play();
 			
-			//rest timer
+			//reset timer
 			timer.stop();
 			timer.reset();						
 		
@@ -201,6 +201,10 @@ $('.btn').click(function()
 			console.log("wrong answer " + gameScores.answeredWrong);
 			audio = new Audio("assets/Buzzer.mp3");
 			audio.play();
+
+			//reset timer
+			timer.stop();
+			timer.reset();	
 
 
 		}
