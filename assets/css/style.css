@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lalezar');
+@import url('https://fonts.googleapis.com/css?family=Wellfleet');
+@import url('https://fonts.googleapis.com/css?family=New+Rocker');
+
+
+#Disney{
+  margin: 20px;
+}
+
 body{
   background: url('../images/background.jpg')fixed;
   background-size: 100%;
@@ -7,27 +16,42 @@ body{
 }
 
 
-/*quizMessage{
+.row{
+  margin-bottom: 10px;
+}
 
-  width: 400px;
-  height: 300px;
-}*/
-
-
-
+#timerDisplay{
+font-family: 'Lalezar', cursive;;
+font-size: 30px;
+}
 
 h1{
-  font-family: 'Bungee Shade', cursive;
+  font-family: 'Wellfleet', cursive;
   font-size: 60px;
   margin: 20px;
 }
 
 p{
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Wellfleet', cursive;
   font-size: 35px;
 
 }
+
+#question{
+  margin: 20px;
+  font-family: 'New Rocker', cursive;
+  font-size: 50px;
+
+  }
+
+#score{
+  font-family: 'Lalezar', cursive;;
+  font-size: 30px;
+
+}
+
   /* Large desktop */
+
 @media (min-width: 1200px) { ... }
  
 /* Portrait tablet to landscape and desktop */
