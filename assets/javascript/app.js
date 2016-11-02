@@ -35,9 +35,37 @@
 		correctGif: "assets/images/giphy4.gif"
 	};
 
+	var question4 = 
+	{
+		question: "Which Disney movie was the first to be nominated for an Oscar?",
+		answer: "Beauty and the Beast",
+		choices: ["Beauty and the Beast", "Aladdin", "Lion King", "Mulan"],
+		correctAnswer: 0,
+		correctGif: "assets/images/giphy5.gif"
+	};
+
+	var question5 = 
+	{
+		question: "Who was the first Disney princess?",
+		answer: "Snow White",
+		choices: ["Aurora", "Snow White", "Ariel", "Tiana"],
+		correctAnswer: 1,
+		correctGif: "assets/images/giphy6.gif"
+	};
+
+
+	var question6 = 
+		{
+			question: "What character was voiced by Matthew Broderick and Jonathan Taylor Thomas?",
+			answer: "Simba",
+			choices: ["Bambi", "Prince Eric", "Aladdin", "Simba"],
+			correctAnswer: 3,
+			correctGif: "assets/images/giphy7.gif"
+		};
+	
 
 //Array of questions
-var QuestionsArray = [question0, question1, question2, question3];
+var QuestionsArray = [question0, question1, question2, question3, question4, question5, question6];
 
 var indexQuestion = 0;
 
