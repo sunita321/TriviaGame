@@ -183,12 +183,12 @@ $('.btn').click(function()
 			$('#quizMessage').html("<h2><p>Correct!</p></h2><img src='" + QuestionsArray[indexQuestion].correctGif + "' height = 200 width = 350 alt='correct'>");
 			gameScores.answeredCorrect ++;//increment score
 			console.log("correct answer " + gameScores.answeredCorrect);
+			audio = new Audio("assets/ding.mp3");
+			audio.play();
 			
-			// hide the questionAsked board and stop the timer
-			//$("#timerDisplay").hide();
+			//rest timer
 			timer.stop();
-			timer.reset();
-						
+			timer.reset();						
 		
 
 		}
@@ -199,6 +199,8 @@ $('.btn').click(function()
 			$('#quizMessage').html("<h2><p>Wrong! <br> The correct answer was: <br>" + QuestionsArray[indexQuestion].answer + "</p></h2>");
 			gameScores.answeredWrong ++;
 			console.log("wrong answer " + gameScores.answeredWrong);
+			audio = new Audio("assets/Buzzer.mp3");
+			audio.play();
 
 
 		}
@@ -239,6 +241,9 @@ function nextQuestion()
 		"<div>"+ "Wrong Guesses: " + gameScores.answeredWrong +"</div>" +
 		"<div>"+ "Missed Questions: " + gameScores.missed +"</div>" 
 		);
+
+		audio = new Audio("assets/TaDa.mp3");
+			audio.play();
 
 		timer.stop();
 		$('#timerDisplay').html('00:00');
