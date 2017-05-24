@@ -15,4 +15,4 @@ This is a Trivia game using JavaScript for the logic and jQuery to manipulate HT
 
 * On the final screen, the number of correct answers, incorrect answers, and an option to restart the game is shown (without reloading the page).
 
-![Screenshot](https://github.com/sunita321/TriviaGame/trivia.png)
+![Screenshot](https://github.com/sunita321/TriviaGame/blob/master/trivia.png)
